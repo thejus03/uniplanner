@@ -2,7 +2,7 @@
 # exit on error
 set -o errexit
 
-apt install -y libsystemd-dev
+
 pip install --upgrade pip
 pip install -r requirements.txt
 
