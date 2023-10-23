@@ -1,0 +1,667 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Uniplanner</title>
+        <meta name="csrf_token" content="{{ csrf_token }}">
+        <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="{% static 'uniplanner/Screenshot 2023-10-10 182246.png' %}" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+            
+            @import url('https://fonts.googleapis.com/css2?family=Adamina&family=Lato:wght@300;400&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+            html {
+                overflow-x:hidden;
+                overflow-y:hidden;
+            }
+
+            body {
+                font-family: 'Adamina', serif;
+                font-size: 21px;
+                margin: 0;
+                background-color: #90AFC5;
+                
+                
+            }
+
+            @keyframes come {
+                from {
+                    margin-left: 0%;
+                }
+                to {
+                    margin-left: 10vw;
+                }
+            }
+
+            .h1 {
+                animation-name: come;
+                font-family: 'Abril Fatface', serif;
+                font-weight: 400;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: 1;
+            }
+
+            .trans {
+                animation-name: fade;
+                animation-duration: 0.25s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: 1;
+            }
+            
+            @keyframes fade {
+                from {
+                    opacity: 1;
+                    
+                }
+                to {
+                    opacity :0;
+                    display : none;
+                }
+            }
+
+            .trans1 {
+                animation-name: popup;
+                animation-duration: 0.5s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: 1;
+            }
+
+            @keyframes popup {
+                0% {
+                    
+                    opacity:0;
+                }
+                50%  {
+                    
+                    opacity:0;
+                }
+                100% {
+                    opacity: 1;
+                }
+
+            }
+
+            .button {
+                    
+                border: 3px solid #000;
+                border-radius: 5px;
+                height: 50px;
+                line-height: normal;
+                color: #282828;
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                user-select: auto;
+                font-size: 16px;
+                padding: 0 6px;
+                padding-left: 12px;
+                
+                
+            }
+
+            .button:focus{
+                    border: 3px solid #4c8bf5;
+                    outline: none;
+                }
+
+
+
+
+            .button-54 {
+                font-family: "Open Sans", sans-serif;
+                font-size: 16px;
+                letter-spacing: 2px;
+                text-decoration: none;
+                text-transform: uppercase;
+                color: #000;
+                cursor: pointer;
+                border: 3px solid;
+                padding: 0.25em 0.5em;
+                box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+                position: relative;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .button-54:active {
+                box-shadow: 0px 0px 0px 0px;
+                top: 5px;
+                left: 5px;
+            }
+
+            @media (min-width: 768px) {
+                .button-54 {
+                    padding: 0.25em 0.75em;
+                }
+            }
+            @media (max-width: 415px) {
+                
+                #space {
+                    margin-left: 20vw;
+                }
+                #planforfuture {
+                    font-size: 50px;
+                    margin-top: 125px;
+                    margin-left: 5%;
+                }
+                #description {
+                    margin-left: 5%;
+                    font-size: 15px;
+                }
+                img {
+                    width:60vw;
+                    left:22vw;
+                    top:55vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:none;
+                }
+                #signin {
+                    border-radius: 20px; 
+                    width: 90px;
+                    height: 40px;
+                    color: white; 
+                    background-color: black;
+                    border: none;
+                    font-size: 15px;
+                    
+                }
+                #uniplanner {
+                    font-size:30px;
+                }
+                #loginpage {
+                    height: 375px;
+                    width: 80vw;
+                    margin-left: 1.5vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 45px;
+                }
+                #registerpage {
+                    height: 375px;
+                    width: 80vw;
+                    margin-left: 1.5vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 35px;
+                }
+                
+            }
+            @media (min-width:487px) {
+                
+                #space {
+                    margin-left: 30vw;
+                }
+                #planforfuture {
+                    font-size: 50px;
+                    margin-top: 150px;
+                    margin-left: 5%;
+                }
+                #description {
+                    margin-left: 5%;
+                }
+                img {
+                    width:45vw;
+                    left:30vw;
+                    top:55vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:none;
+                }
+                #signin {
+                    border-radius: 20px; 
+                    width: 100px;
+                    height: 40px;
+                    color: white; 
+                    background-color: black;
+                    border: none;
+                    font-size: 15px;
+                    
+                }
+                #uniplanner {
+                    font-size:35px;
+                }
+                #loginpage {
+                    height: 400px;
+                    width: 80vw;
+                    margin-left: 3vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 45px;
+                }
+                #registerpage {
+                    height: 400px;
+                    width: 80vw;
+                    margin-left: 3vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 40px;
+                }
+                
+            }
+            @media (min-width:620px) {
+                
+                #space {
+                    margin-left: 25vw;
+                }
+                #planforfuture {
+                    font-size: 55px;
+                    margin-top: 150px;
+                    margin-left: 5%;
+                }
+                #description {
+                    margin-left: 10%;
+                }
+                img {
+                    width:35vw;
+                    left:36vw;
+                    top:50vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:block;
+                }
+                #signin {
+                    color: black; 
+                    font-size: 15px; 
+                    background-color: transparent;
+                    border: none;
+                    width:100px;
+                }
+                #uniplanner {
+                    font-size:35px;
+                }
+                #loginpage {
+                    height: 450px;
+                    width: 65vw;
+                    margin-left: 12.5vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 55px;
+                }
+                #registerpage {
+                    height: 450px;
+                    width: 65vw;
+                    margin-left: 12.5vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 45px;
+                }
+                
+            }
+
+            @media (min-width: 745px) {
+                #space {
+                    margin-left: 35vw;
+                }
+                #planforfuture {
+                    font-size: 55px;
+                    margin-top: 150px;
+                    margin-left: 10%;
+                }
+                #description {
+                    margin-left: 10%;
+                }
+                img {
+                    width:30vw;
+                    left:39vw;
+                    top:45vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:block;
+                }
+                #signin {
+                    color: black; 
+                    font-size: 15px; 
+                    background-color: transparent;
+                    border: none;
+                    width:100px;
+                }
+                #uniplanner {
+                    font-size:35px;
+                }
+                #loginpage {
+                    height: 450px;
+                    width: 65vw;
+                    margin-left: 12.5vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 55px;
+                }
+                #registerpage {
+                    height: 450px;
+                    width: 65vw;
+                    margin-left: 12.5vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 50px;
+                }
+            }
+            @media (min-width: 929px) {
+                #space {
+                    margin-left: 45vw;
+                }
+                #planforfuture {
+                    font-size: 60px;
+                    margin-top: 150px;
+                    margin-left: 10%;
+                }
+                #description {
+                    margin-left: 10%;
+                }
+                img {
+                    width:30vw;
+                    left:37vw;
+                    top:45vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:block;
+                }
+                #signin {
+                    color: black; 
+                    font-size: 15px; 
+                    background-color: transparent;
+                    border: none;
+                    width:100px;
+                }
+                #uniplanner {
+                    font-size:35px;
+                }
+                #loginpage {
+                    height: 500px;
+                    width: 55vw;
+                    margin-left: 20vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 60px;
+                }
+                #registerpage {
+                    height: 500px;
+                    width: 55vw;
+                    margin-left: 20vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 60px;
+                }
+            }
+            
+            @media (min-width:1180px) {
+                #space {
+                    margin-left: 55vw;
+                }
+                #planforfuture {
+                    font-size: 65px;
+                    margin-top: 150px;
+                    margin-left: 10%;
+                }
+                #description {
+                    margin-left: 10%;
+                }
+                img {
+                    width:20vw;
+                    left:40vw;
+                    top:40vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:block;
+                }
+                #signin {
+                    color: black; 
+                    font-size: 15px; 
+                    background-color: transparent;
+                    border: none;
+                    width:100px;
+                }
+                #uniplanner {
+                    font-size:35px;
+                }
+                #loginpage {
+                    height: 500px;
+                    width: 45vw;
+                    margin-left: 27vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 65px;
+                }
+                #registerpage {
+                    height: 500px;
+                    width: 45vw;
+                    margin-left: 27vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 65px;
+                }
+            }
+
+            @media (min-width:1400px) {
+                #space {
+                    margin-left: 60vw;
+                }
+                #planforfuture {
+                    font-size: 80px;
+                    margin-top: 175px;
+                    margin-left: 10%;
+                }
+                #description {
+                    margin-left: 10%;
+                }
+                img {
+                    width:15vw;
+                    margin-left:20px;
+                    top:35vh;
+                    right:40vw;
+                }
+                #getstarted {
+                    display:block;
+                }
+                #signin {
+                    color: black; 
+                    font-size: 15px; 
+                    background-color: transparent;
+                    border: none;
+                    width:100px;
+                }
+                #uniplanner {
+                    font-size:35px;
+                }
+                #loginpage {
+                    height: 500px;
+                    width: 40vw;
+                    margin-left: 27vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo {
+                    font-size: 70px;
+                }
+                #registerpage {
+                    height: 500px;
+                    width: 40vw;
+                    margin-left: 27vw;
+                    margin-top: 20vh;
+                    padding: 30px;
+                }
+                #demo1{
+                    font-size: 70px;
+                }
+            }
+            
+                
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                document.querySelector("#register").style.display = 'none';
+                document.querySelector("#login").style.display = 'none';
+                document.querySelector('body').style.width = document.documentElement.clientWidth + 'px';
+                document.querySelector('body').style.height = window.innerHeight + 'px';
+                document.querySelector('#info').style.width = document.documentElement.clientWidth + 'px';
+            
+                
+            });
+
+            function register() {
+                
+                document.querySelector("#info").classList.add('trans');
+                document.querySelector("#register").style.display = 'flex';
+                document.querySelector("#login").style.display = 'none';
+                document.querySelector("#register").classList.add("trans1");
+                typeWriter2();
+            }
+
+            function login() {
+                document.querySelector("#info").classList.add('trans');
+                document.querySelector("#register").style.display = 'none';
+                document.querySelector("#login").style.display = 'flex';
+                document.querySelector("#login").classList.add("trans1");
+                typeWriter();
+                
+            }
+
+            function signup() {
+                var csrfToken = document.querySelector("[name='csrf_token']").content;
+                console.log("signup process happening")
+                fetch('/register',{
+                    method: "POST",
+                    headers: {
+                        "Content-Type" :"application/json",
+                        "X-CSRFToken": csrfToken
+                    },
+                    body: JSON.stringify({
+                        "new_username" : document.querySelector('#new_username').value,
+                        "new_password" : document.querySelector('#new_password').value,
+                        "confirm_password" : document.querySelector('#confirm_password').value
+                    })
+                })
+                .then(response => response.text())  
+                .then(text => {
+                    console.log(text)
+                    if (text === 'Passwords do not match' || text === 'Username taken') {
+                        alert(`${text}`)
+                    }
+                    else {
+                        login();
+                    }
+                });
+            }  
+            
+            var i = 0;
+            var txt = 'Welcome back,'; /* The text */
+            var speed = 100; /* The speed/duration of the effect in milliseconds */
+
+            function typeWriter() {
+                
+                if (i < txt.length) {
+                    document.getElementById("demo").innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+
+
+            var a = 0;
+            var txt1 = 'Join Uniplanner,'; /* The text */
+            var speed1 = 100; /* The speed/duration of the effect in milliseconds */
+
+            function typeWriter2() {
+                
+                if (a < txt1.length) {
+                    document.getElementById("demo1").innerHTML += txt1.charAt(a);
+                    a++;
+                    setTimeout(typeWriter2, speed1);
+                }
+            }
+
+            
+
+
+        </script>
+
+    </head>
+    <body>
+
+        <div id="info">
+            <header style="position: absolute; display: flex; align-items: center;background-color:#90AFC5;width: 100%;height: 80px;">
+                
+                <h1 id="uniplanner" class='h1' style="margin-left: 5vw;">Uniplanner</h1>
+                <div id="space">
+                    <button id="signin" onclick="login()">Sign in</button>
+                </div>
+                <div id='getstarted' style="margin-left: 2vw;">
+                    <button onclick="register()" style="border-radius: 20px; width: 100px;height: 40px;color: white; background-color: black;border: none;font-size: 15px;margin-right:100px;">Get Started</button>
+                </div>
+            </header>
+            <div style="height: 55vh; background-color: #90AFC5;border: 1px solid #90AFC5;display: flex; flex-direction: column;">
+                <img src={% static 'uniplanner/Screenshot 2023-10-10 182246.png' %} alt="logo" style="position:absolute;">
+
+                <h1 id='planforfuture' style="color:#FFE8D4;font-family: 'Playfair Display', serif;font-weight: 600;">Plan For Your Future.</h1>
+                <div id='description' style="color:black;">
+                    <div>Explore our incredible study system</div>
+                    <div>engineered to produce success.</div>
+                </div>
+                <button onclick="register()" style="width: 200px;margin-left: 10%; font-size: 20px; color: white; background-color: black; border: none; border-radius: 25px;height: 40px;margin-top: 25px;font-weight: 500;font-family: 'Playfair Display', serif;">Start planning</button>
+                
+            </div>
+            <div>
+                
+            </div>
+        </div>
+
+        <div id="register" style='display:none;'>
+            <div id='registerpage' style="background-color: #FFE8D4;border-radius: 50px;position: absolute; border: 3px solid black;">
+                <h1 id='demo1' style="text-align: center;font-family: 'Playfair Display', serif;font-weight: 600;"></h1>
+                <div style="display: flex;flex-direction: column;align-items: center;">
+                    <input class='button' type="text" name="new_username" id="new_username" placeholder="Username" style="width: 200px; margin-bottom: 10px;margin-top: 20px;" autocomplete="off" required>
+                    <input class='button' type="password" name="new_password" id="new_password" placeholder="Password" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                    <input class='button' type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                    <button class="button-54" style="margin-top: 20px;" onclick="signup()">Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="login" style='display:none;'>
+            <div id='loginpage' style="background-color: #FFE8D4;border-radius: 50px; position: absolute; border: 3px solid black;">
+                <h1 id="demo" style="text-align: center;font-family: 'Playfair Display', serif;font-weight: 600;"></h1>
+                <form action="/login" method="POST" style="display: flex;flex-direction: column;align-items: center;">
+                    {% csrf_token %}
+                    <input class='button' type="text" name="username" id="username" placeholder="Username" style="width: 200px; margin-bottom: 10px;margin-top: 20px;" autocomplete="off" required>
+                    <input class='button' type="password" name="password" id="password" placeholder="Password" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                    <button type="submit" class="button-54" style="margin-top: 20px;">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

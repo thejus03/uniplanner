@@ -1,0 +1,296 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href={% static "uniplanner/styles.css" %} rel="stylesheet">
+        <meta name="csrf_token" content="{{ csrf_token }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="{% static 'uniplanner/Screenshot 2023-10-10 182246.png' %}" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+
+            
+
+            @import url('https://fonts.googleapis.com/css2?family=Adamina&family=Lato:wght@300;400&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+            body {
+                font-family: 'Adamina', serif;
+                font-size: 21px;
+                margin: 0;
+                
+            }
+            .button {
+                    
+                border: 3px solid #000;
+                border-radius: 5px;
+                height: 50px;
+                line-height: normal;
+                color: #282828;
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                user-select: auto;
+                font-size: 16px;
+                padding: 0 6px;
+                padding-left: 12px;
+                
+                
+            }
+        
+            .button:focus{
+                    border: 3px solid #4c8bf5;
+                    outline: none;
+                }
+        
+        
+        
+        
+            .button-54 {
+                font-family: "Open Sans", sans-serif;
+                font-size: 16px;
+                letter-spacing: 2px;
+                text-decoration: none;
+                text-transform: uppercase;
+                color: #000;
+                cursor: pointer;
+                border: 3px solid;
+                padding: 0.25em 0.5em;
+                box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+                position: relative;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+        
+            .button-54:active {
+                box-shadow: 0px 0px 0px 0px;
+                top: 5px;
+                left: 5px;
+            }
+        
+            @media (min-width: 768px) {
+                .button-54 {
+                    padding: 0.25em 0.75em;
+                }
+            }
+
+            .event-container {
+                font-family: 'Adamina', serif;
+                max-width: 800px;
+                margin: 0 auto;
+                
+                
+              }
+              
+              .event-container h3.year {
+                font-size: 40px;
+                text-align: center;
+                border-bottom: 1px solid #b1b1b1;
+              }
+              
+              .event-container .event {
+                box-shadow: 0 9px 16px -8px rgba(0, 0, 0, 0.4);
+                display: flex;
+                border-radius: 8px;
+                margin: 32px 0;
+                background-color:white;
+              }
+              
+              .event .event-left {
+                background: #FFE8D4;
+                min-width: 82px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #90AFC5;
+                padding: 8px 48px;
+                font-weight: bold;
+                text-align: center;
+                border-radius: 8px 0 0 8px;
+              }
+              
+              .event .event-left .date {
+                font-size: 56px;
+              }
+              
+              .event .event-left .month {
+                font-size: 16px;
+                font-weight: normal;
+              }
+              
+              .event .event-right {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 24px;
+                
+              }
+              
+              .event .event-right h3.event-title {
+                font-size: 30px;
+                font-weight:900;
+                margin: 24px 0 10px 0;
+                color: #218bbb;
+                text-transform: capitalize;
+              }
+              
+              .event .event-right .event-timing {
+                background: #fff8ba;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
+                padding: 8px;
+                border-radius: 16px;
+                margin: 24px 0;
+                font-size: 14px;
+              }
+              
+              .event .event-right .event-timing img {
+                height: 20px;
+                padding-right: 8px;
+              }
+              
+              @media (max-width: 550px) {
+                .event {
+                  flex-direction: column;
+                }
+              
+                .event .event-left {
+                  padding: 0;
+                  border-radius: 8px 8px 0 0;
+                }
+              
+                .event .event-left .event-date .date,
+                .event .event-left .event-date .month {
+                  display: inline-block;
+                  font-size: 24px;
+                }
+              
+                .event .event-left .event-date {
+                  padding: 10px 0;
+                }
+              }
+
+              #elementEl::after {
+                content: '|';
+                margin-left: 5px;
+                animation: blink 0.7s infinite;
+              }
+              
+              @keyframes blink {
+                0% { opacity: 1; }
+                100% { opacity: 0; }
+              }
+
+
+              .delete {
+                outline:none;
+                border: none;
+                color: grey;
+                background:transparent;
+              }
+
+              .delete:hover {
+                color:red;
+              }
+
+              
+              .material-symbols-outlined {
+                font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+              }
+            
+
+              
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+            {% block style %}
+            {% endblock %}
+        </style>
+        
+        {% block script %}{% endblock %}
+    </head>
+
+    <body style="display: flex;flex-direction: column;background-color: #90AFC5;overflow-x:hidden;">
+        <header style="position: absolute; display: flex; align-items: center;background-color:#90AFC5;width: 100vw;height: 70px;">
+            <div style="display: flex; justify-content: space-between;width: 100%;align-items: center;">
+                <div style="display: flex; color: grey;align-items: center;">
+                    <a href='/'><button style="background-color: transparent; border:none;outline: none;height: fit-content;width: fit-content;"><img src={% static 'uniplanner/Screenshot 2023-10-10 182246.png' %} alt="logo" style="width:40px; margin-left:25px; margin-bottom: 6px;"></button></a>
+                    <!--<div style="position: relative;margin-left: 10px;">
+                        <svg style="position:absolute;margin-left:3px;margin-top:6px;" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.1 11.06a6.95 6.95 0 1 1 13.9 0 6.95 6.95 0 0 1-13.9 0zm6.94-8.05a8.05 8.05 0 1 0 5.13 14.26l3.75 3.75a.56.56 0 1 0 .8-.79l-3.74-3.73A8.05 8.05 0 0 0 11.04 3v.01z" fill="currentColor"></path></svg>
+                        <input type="text" placeholder="Search Uniplanner" style="padding-left: 28px; width: 200px; border-radius: 30px;height: 40px;border: 1px solid grey;outline: none;font-size: 14px;" autocomplete="off">
+                    </div> -->
+                </div>
+                
+                <div>
+                    <form action="/logoff" method="POST" style="margin-right: 8vw;">
+                        {% csrf_token %}
+                        <div class="dropdown">
+                          <button type="button" style="background-color: transparent;border: none;"><i class="material-symbols-outlined" style="font-size: 4vh;">&#xe853</i></button>
+                          <div class="dropdown-content">
+                            <div style="font-size: small;">signed in as {{ user.username }}</div>
+                            <button type="submit" style="color: black; background-color: transparent;border: none;font-size: 15px;">Log Off</button>
+                            
+                          </div>
+                        </div>
+                        
+                    </form>
+                </div>
+
+            </div>
+
+          </header>
+        <div>
+            {% block body %}{% endblock %}
+        </div>
+        
+        
+    </body>
+
+</html>

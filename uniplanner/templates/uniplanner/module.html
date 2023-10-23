@@ -1,0 +1,890 @@
+{% extends "uniplanner/layout2.html" %}
+{%load static %}
+{% block title %}Home{% endblock %}
+{% block style %}
+    .all_events {
+        display: flex;
+        flex-direction:column;
+        overflow:auto;
+        overflow-x:hidden;
+        
+        border:none;
+        
+        
+        background-color: transparent;
+        
+    }
+
+    .trans {
+        animation-name: fade;
+        animation-duration: 0.25s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+    
+    @keyframes fade {
+        from {
+            opacity: 1;
+            pointer-events:auto;
+            
+        }
+        to {
+            opacity :0.3;
+            pointer-events:none;
+        }
+    }
+
+    .trans1 {
+        animation-name: popup;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes popup {
+        0% {
+            
+            opacity:0;
+        }
+        50%  {
+            
+            opacity:0;
+        }
+        100% {
+            opacity: 1;
+            
+        }
+
+    }
+    .trans3 {
+        animation-name: fadein;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes fadein {
+        0% {
+            opacity:0.3;
+            pointer-events:auto;
+        }
+        100% {
+            opacity: 1;
+            pointer-events:auto;
+            
+        }
+
+    }
+
+    .trans2 {
+        animation-name: fadeout;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes fadeout {
+        0% {
+            opacity:1;
+            
+        }
+        100% {
+            opacity: 0;
+            
+        }
+
+    }
+
+    .tick {
+        color: grey;
+    }
+
+    .tick:hover {
+        font-weight:500;
+        color: #097969;
+        animation-name: shake;
+        animation-duration:2s;
+        animation-iteration-count:infinite;
+        
+    }
+
+    .question {
+        color: red;
+        font-weight:300;
+    }
+
+    .question:hover {
+        animation-name:up;
+        
+        animation-duration:1s;
+        animation-iteration-count:infinite;
+        animation-fill-mode:;
+    }
+
+    @keyframes up {
+        0% {
+            transform: translateY(0);
+        }
+        20% {
+            transform:translateY(-5px);
+        }
+        40% {
+            transform:translateY(0);
+        }
+        80% {
+            transform:translateY(-5px);
+        }
+        100% {
+            transform:translateY(0);
+        }
+    }
+    @keyframes shake {
+        0% {
+            transform: translateX(0);
+        }
+        20% {
+            transform:translateX(5px);
+        }
+        40% {
+            transform:translateX(0);
+        }
+        80% {
+            transform:translateX(5px);
+        }
+        100% {
+            transform:translateX(0);
+        }
+
+    }
+    .fulltick {
+        color:#097969;
+        font-weight: 600;
+        
+    }
+    .all_events::-webkit-scrollbar {
+        
+        width:20px;
+        
+    }
+    
+    .all_events::-webkit-scrollbar-thumb {
+        background-color: lightgrey;
+        border-radius: 10px;
+        border: 5px solid transparent;
+        background-clip: content-box;
+      }
+    .all_events::-webkit-scrollbar-thumb:hover {
+        background-color: grey;
+      }
+
+    @media (max-width:599px) {
+        #plus {
+            position:absolute;
+            right:100px;
+            top:16vh;
+            font-size:100px;
+            
+        }
+        #mytasks {
+            position:absolute;
+            left:5vw;
+            top:22vh;
+            font-size: 45px;
+            font-weight:600;
+        }
+
+        .all_events {
+           
+           height:60vh;
+           width:590px;
+           
+        }
+
+        #table {
+            position:absolute;
+            width:98%;
+            right:5px;
+                
+        }
+
+        #unanswered {
+            position:absolute;
+            top:100vh;
+           
+        }
+        #question {
+            margin-left:0vw;
+            margin-right:0vw;
+            width:98vw;
+            
+        }
+
+        #specific {
+            margin-left:0vw;
+            font-size:23px;
+        }
+        #size {
+            font-size:35px;
+        }
+
+
+        #manage {
+            justify-content: flex-start;
+            margin-right: 15vw;
+        }
+        #font-size {
+            font-size:13px;
+        }
+        #addtask {
+            font-size:40px;
+        }
+        #actualform2{
+            width: 85vw;
+            position: fixed;
+            margin-left: 7.5vw;
+            top: 17vh;
+        }
+        #whatquestion {
+            font-size:40px;
+        }
+        #actualform1 {
+            
+            width: 85vw;
+            margin-left: 7.5vw;
+            top: 17vh;
+        }
+    }
+
+    @media (min-width:600px) {
+        
+
+        
+        #plus {
+            position:absolute;
+            right:100px;
+            top:16vh;
+            font-size:100px;
+            
+        }
+        #mytasks {
+            position:absolute;
+            left:5vw;
+            top:22vh;
+            font-size: 45px;
+            font-weight:600;
+        }
+
+        .all_events {
+           
+           height:60vh;
+           width:590px;
+           
+        }
+
+        #table {
+            position:absolute;
+            width:98%;
+            right:5px;
+                
+        }
+
+        #unanswered {
+            position:absolute;
+            top:100vh;
+            right:2vw;
+        }
+        #question {
+            margin-left:10vw;
+            
+        }
+
+        #specific {
+            margin-left:10vw;
+            font-size:30px;
+        }
+        #size {
+            font-size:60px;
+        }
+
+
+        #manage {
+            justify-content: flex-start;
+            margin-right: 15vw;
+        }
+        #font-size {
+            font-size:15px;
+        }
+        #addtask {
+            font-size:60px;
+        }
+        #actualform2{
+            width: 70vw;
+            position: fixed;
+            margin-left: 15vw;
+            top: 17vh;
+        }
+        #whatquestion {
+            font-size:50px;
+        }
+        #actualform1 {
+            
+            width: 80vw;
+            margin-left: 10vw;
+            top: 17vh;
+            
+        }
+    }
+
+    @media (min-width:800px) {
+        
+        #plus {
+            position:absolute;
+            right:10px;
+            left: 0vw;
+            top:50vh;
+            font-size:150px;
+            
+        }
+        #mytasks {
+            position:static;
+            margin-left: 15vw;
+            margin-right: 0vw;
+            font-size: 45px;
+            font-weight:600;
+        }
+
+        .all_events {
+           height:60vh;
+           width:80vw;
+           
+        }
+
+        #manage {
+            justify-content: flex-start;
+            margin-right: 15vw;
+        }
+        #table {
+            position:static;
+            
+            margin-left:0vw;
+            width:80vw;
+        }
+        #question {
+            margin-right:10vw;
+        }
+
+        #specific {
+            margin-left:3vw;
+            font-size:40px;
+        }
+        #size {
+            font-size:60px;
+        }
+        #font-size {
+            font-size:15px;
+        }
+        #addtask {
+            font-size:70px;
+        }
+        #actualform2{
+            width: 60vw;
+            position: fixed;
+            margin-left: 20vw;
+            top: 17vh;
+        }
+        #whatquestion {
+            font-size:70px;
+        }
+        #actualform1 {
+            
+            width: 70vw;
+            margin-left: 15vw;
+            top: 17vh;
+        }
+    }  
+
+    @media (min-width:929px) {
+        #plus {
+            position:absolute;
+            right:10px;
+            left: 2vw;
+            top:50vh;
+            font-size:150px;
+            
+        }
+        #mytasks {
+            position:static;
+            margin-left: 15vw;
+            margin-right: 0vw;
+            font-size: 45px;
+            font-weight:600;
+        }
+
+        .all_events {
+            
+           height:60vh;
+           width:80vw;
+           margin-right:10px;
+        }
+
+        #manage {
+            justify-content: flex-start;
+            margin-right: 15vw;
+        }
+        #table {
+            position:static;
+            margin-left:0vw;
+            width:75vw;
+        }
+        #question {
+            margin-right:8vw;
+        }
+
+        #specific {
+            margin-right:1vw;
+            font-size:45px;
+        }
+        #size {
+            font-size:75px;
+        }
+        #font-size {
+            font-size:15px;
+        }
+        #addtask {
+            font-size:70px;
+        }
+        #actualform2{
+            width: 60vw;
+            position: fixed;
+            margin-left: 20vw;
+            top: 17vh;
+        }
+        #whatquestion {
+            font-size:70px;
+        }
+        #actualform1 {
+            
+            width: 60vw;
+            margin-left: 20vw;
+            top: 17vh;
+        }
+    }
+
+    @media (min-width: 1150px){
+        #mytasks {
+            position:static;
+            margin-left: 25vw;
+            font-size: 55px;
+            font-weight:600;
+        }
+
+        .all_events {
+            
+           height:60vh;
+           width:60vw;
+           margin-right:10vw;
+        }
+
+        #manage {
+            justify-content: flex-start;
+            margin-right: 15vw;
+        }
+        #plus {
+            left: 2vw;
+            right: 10px;
+            top:50vh;
+            position:absolute;
+            font-size: 175px;
+        }
+        #table {
+            position:static;
+            margin-left:0vw;
+            width:75vw;
+        }
+        #question {
+            margin-right:20vw;
+            
+        }
+
+        #specific {
+            margin-right:10vw;
+            font-size:50px;
+        }
+        #size {
+            font-size:75px;
+        }
+        #font-size {
+            font-size:15px;
+        }
+        #addtask {
+            font-size:70px;
+        }
+        #actualform2{
+            width: 40vw;
+            position: fixed;
+            margin-left: 30vw;
+            top: 17vh;
+        }
+        #whatquestion {
+            font-size:70px;
+        }
+        #actualform1 {
+            
+            width: 50vw;
+            margin-left: 25vw;
+            top: 17vh;
+        }
+        
+    }
+    
+    @media (min-width: 1510px) {
+        
+        #mytasks {
+            position:static;
+            margin-right:0vw;
+            margin-left:15vw;
+            font-size: 60px;
+            font-weight:600;
+        }
+        .all_events {
+            
+            height:60vh; 
+            width:50vw;
+            margin-left:20vw;
+            margin-right:1vw;
+            
+        }
+        #plus {
+            position:static;
+            margin-left: 0vw;
+            margin-right: 150px;
+            font-size: 175px;
+            
+        }
+        #table {
+            position:static;
+            margin-left:0vw;
+            margin-right:0vw;
+        }
+        #question {
+            margin-right:5vw;
+            width:50vw;
+
+        }
+
+        #unanswered {
+            position:static;
+            margin-right:5vw;
+        }
+
+        #ask {
+            margin-right:2vw;
+        }
+       
+        #specific {
+            margin-left:20vw;
+            font-size:50px;
+        }
+        #size {
+            font-size:75px;
+        }
+        #font-size {
+            font-size:15px;
+        }
+        #addtask {
+            font-size:70px;
+        }
+        #actualform2{
+            width: 40vw;
+            position: fixed;
+            margin-left: 30vw;
+            top: 17vh;
+        }
+        #whatquestion {
+            font-size:70px;
+        }
+        #actualform1 {
+            
+            width: 40vw;
+            margin-left: 30vw;
+            top: 17vh;
+        }
+        
+    }
+    
+
+{% endblock %}
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('#body-container').style.width = document.documentElement.clientWidth + 'px';
+        
+    });
+    
+
+    function openwarning() {
+        
+        document.querySelector("#body-container").classList.remove('trans3');
+        document.querySelector('#form2').classList.remove('trans2');
+        document.querySelector('#form2').style.display='flex';
+        document.querySelector("header").classList.add('trans');
+        document.querySelector("#body-container").classList.add('trans');
+        document.querySelector('#form2').classList.add('trans1');
+    }
+
+    function closewarning() {
+        
+        document.querySelector("header").classList.remove('trans');
+        document.querySelector("#body-container").classList.remove('trans');
+        document.querySelector('#form2').classList.remove('trans1');
+        document.querySelector("header").classList.add('trans3');
+        document.querySelector("#body-container").classList.add('trans3');
+        document.querySelector('#form2').classList.add('trans2');
+        document.querySelector('#form2').style.display='none';
+        document.querySelector("header").style.pointerEvents="auto";
+        document.querySelector('#priority').checked=false;
+    }
+
+
+    function done(event) {
+        dead_id = event.target.dataset.id;
+        console.log(dead_id);
+        var csrfToken = document.querySelector("[name='csrf_token']").content;
+        if (event.target.style.color !='rgb(9, 121, 105)') {
+           fetch("/done",{
+            method:"POST",
+            headers: {
+                "Content-Type":"application/json",
+                "X-CSRFToken": csrfToken
+            },
+            body: JSON.stringify({
+                "dead_id":dead_id
+            })
+            })
+            .then(response => response.text())
+            .then(text => {
+                console.log(text);
+                event.target.style.color = '#097969';
+                event.target.style.fontWeight = '600';
+                event.target.classList.remove("tick");
+                event.target.classList.add("fulltick");
+                event.target.parentNode.onclick = null;
+                event.target.parentNode.parentNode.parentNode.style.textDecoration = 'line-through';
+                event.target.parentNode.parentNode.parentNode.style.setProperty("text-decoration-thickness", "2px");
+            }); 
+        }
+        
+    }
+
+    function asked(event) {
+        question_id = event.target.dataset.id;
+        module_id = event.target.dataset.module;
+        var csrfToken = document.querySelector("[name='csrf_token']").content;
+        fetch("/asked", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrfToken
+            },
+            body: JSON.stringify({
+                "question_id": question_id,
+                "module_id":module_id
+            })
+        })
+        .then(response => response.text())
+        .then(text => {
+            console.log(text);
+            event.target.style.color = 'grey';
+            event.target.style.fontWeight = '600';
+            event.target.classList.remove("question");
+            event.target.parentNode.onclick = null;
+            event.target.parentNode.parentNode.parentNode.style.textDecoration = 'line-through';
+            event.target.parentNode.parentNode.parentNode.style.setProperty("text-decoration-thickness", "2px");
+            
+        });
+    }
+
+    function openForm() {
+        document.querySelector("header").classList.remove('trans3');
+        document.querySelector("#body-container").classList.remove('trans3');
+        document.querySelector('#form').classList.remove('trans2');
+        document.querySelector('#form').style.display='flex';
+        document.querySelector("header").classList.add('trans');
+        document.querySelector("#body-container").classList.add('trans');
+        document.querySelector('#form').classList.add('trans1');
+        
+    }
+
+    function closeForm() {
+        
+        
+        document.querySelector('#event-repeat').value= '';
+        document.querySelector("header").classList.remove('trans');
+        document.querySelector("#body-container").classList.remove('trans');
+        document.querySelector('#form').classList.remove('trans1');
+        document.querySelector("header").classList.add('trans3');
+        document.querySelector("#body-container").classList.add('trans3');
+        document.querySelector('#form').classList.add('trans2');
+        document.querySelector('#form').style.display='none';
+        document.querySelector("header").style.pointerEvents="auto";
+        
+    }   
+
+    window.addEventListener('beforeunload', function() {
+        localStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    
+    window.addEventListener('load', function() {
+        if (localStorage.getItem('scrollPosition') !== null) {
+            window.scrollTo(0, parseInt(localStorage.getItem('scrollPosition')));
+        }
+    });
+
+
+</script>
+{% endblock %}
+
+
+{% block body %}
+    <div id="body-container" style="display: flex;flex-direction: column;">
+        <h1 style="margin-top: 10vh; font-size:70px;text-align:center; color: #3E363F;">{{ title.name }}</h1>
+        <div id="page1" style="display: flex;align-items: center; margin-top: 10vh;flex-direction: column;">
+            <div id="manage" style="display: flex;align-items: flex-start;justify-content: flex-start;">
+                <div id="mytasks" style="font-family: 'Playfair Display', serif;">My Tasks,</div>
+                <div id='table' class='all_events' style="padding: 20px; border:2px solid grey; border-radius: 10px;">
+                    <table>
+                        <thead style="border-top: 1px solid lightgrey;font-size: medium;border-bottom: 1px solid lightgrey;font-size: large;height:5vh;">
+                            
+                            <tr>
+                                
+                                <td style="text-align: center;">Task name</td>
+                                <td><div style="display: flex;align-items: center;"><div>Due date & time</div> <i class="material-symbols-outlined">&#xe984</i></div></td>
+                                <td>Remaining days</td>
+                                <td>Urgency</td>
+                            </tr>  
+                        </thead>
+                        <tbody id="font-size"   >
+                            {% for do in todo %}
+                                {% if do.status == 'done' and do.remaining_time < 0 %}
+
+                                {% else %}
+                                {% if do.priority == "yes" %}
+                                <tr style="border-top:1px solid grey; border-bottom:1px solid grey;height: 5vh;background-color: #FCF1DD;">
+                                {% else %}
+                                <tr style="border-top:1px solid lightgrey; border-bottom:1px solid lightgrey;height: 5vh;">
+                                {% endif %}
+                                    {% if do.status == "undone" %}
+                                        
+                                            <td><div style="display: flex; align-items: center;"><button id="{{ do.id }}" onclick="done(event)" style="border: none;background-color: transparent;      height: fit-content;width: fit-content;font-weight:300"><i data-id="{{ do.id }}" class="material-symbols-outlined tick" style="margin-right: 1vw;">&#xe86c</i></button>{{ do.task }}</div></td>
+                                        
+                                    {% else %}
+                                        <td><div style="display: flex; align-items: center;"><button style="cursor:default;border: none;background-color: transparent;height: fit-content;width: fit-content;font-weight:300"><i data-id="{{ do.id }}" class="material-symbols-outlined fulltick" style="margin-right: 1vw;">&#xe86c</i></button>  <s style="text-decoration-line: line-through; text-decoration-thickness: 2px;">{{ do.task }}</s></div></td>
+                                    {% endif %}
+
+                                    <td>{{ do.date }} {{ do.time }}</td>
+                                    {% if do.remaining_time < 0 %}
+                                        <td style="color:red;"><strong>DEADLINE PAST</strong></td>
+                                    {% elif do.remaining_days == 0 and do.remaining_time > 0 %}
+                                        <td>Today</td>
+                                    {% elif do.remaining_days == 1 %}
+                                        <td>A day</td>
+                                    {% else %}
+                                        <td>{{ do.remaining_days }} days</td>
+                                    {% endif %}
+
+                                    {% if do.remaining_days <= 1 %}
+                                        <td><div class="timing" style="background-color: #FAA0A0;">High</div></td>
+                                    
+
+                                    {% elif do.remaining_days > 1 and do.remaining_days <= 7 %}
+                                        <td><div class="timing" style="background-color: palegoldenrod;">Medium</div></td>
+                                    {% else %}
+                                        <td><div class="timing" style="background-color: #C1E1C1;">Low</div></td>
+                                    {% endif %}
+                                </tr>
+                                {% endif %}
+                            {% endfor %} 
+                        </tbody>
+                    </table>
+                </div>
+                <div ><button id="plus" style="border:none;background-color: transparent;width:0;outline:none;" class="dip" onclick="openwarning()">&#65291;</button></div>
+            </div>
+            
+            
+        </div>
+        <div id='unanswered' style="display: flex;align-items: center; margin-top: 10vh;flex-direction: column;">
+            <div style="display: flex;justify-content: center;">
+                <div id="specific" style="font-family: 'Playfair Display', serif;font-weight:600;text-align:center;">Unanswered Questions</div>
+                <button id="ask" style="position: absolute;right:1vw;border:none;background-color: transparent;" onclick="openForm()"><span id="size" class="material-symbols-outlined">
+                    &#xf8ea
+                    </span></button>
+            </div>
+            
+
+            <div id="question" class='all_events' style="padding: 20px;">
+                <table>
+                    <thead style="border-top: 1px solid lightgrey;font-size: medium;border-bottom: 1px solid lightgrey;font-size: large;height:5vh;">
+                        <tr>
+                            <td></td>
+                            <td style="text-align: center;">Questions</td>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 15px;">
+                        {% for question in questions %}
+                        <tr style="border-top:1px solid lightgrey; border-bottom:1px solid lightgrey;height: 5vh;">
+                            {% if not question.answered_date %}
+                                <td style="width: 1vw;"><button id="{{ question.id }}" onclick="asked(event)" style="border: none;background-color: transparent;height: fit-content;width: fit-content;"><i data-id="{{ question.id }}" data-module="{{ id }}" class="material-symbols-outlined question" style="margin-right: 1vw;">&#xeb8b</i></button></td>
+                                <td>{{ question.toask }}</td>
+                            {% else %}
+                                <td style="width: 1vw;"><button id="{{ question.id }}" style="border: none;background-color: transparent;height: fit-content;width: fit-content;"><i data-id="{{ question.id }}" data-module="{{ id }}" class="material-symbols-outlined" style="margin-right: 1vw;font-weight: 600;color: grey;">&#xeb8b</i></button></td>
+                                <td><s style="text-decoration-line: line-through; text-decoration-thickness: 2px;">{{ question.toask }}</s></td>
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                            <td></td>
+                            <td><div style="text-align: center; font-size: 30px; "><em>--None--</em></div></td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            
+    </div>
+
+    <div id="form2" style="display: none;">
+        <div id="actualform2" style="background-color: #FFE8D4;border-radius: 10px; height: fit-content;padding: 30px; border: 3px solid black;">
+            <button class="delete" style="border-radius: 50px;" onclick="closewarning()">✕</button>
+            <h1 id="addtask" style="text-align: center;font-family: 'Playfair Display', serif;font-weight: 600;">Add Task</h1>
+            <form action="/add_task/{{ id }}" method="POST" style="display: flex;flex-direction: column;align-items: center;">
+                {% csrf_token %}
+                
+                <input name="task_name" class='button' type="text" id="task_name" placeholder="Name of task" style="width: 200px; margin-bottom: 10px;margin-top: 20px;" autocomplete="off" required>
+                <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                    <div>Due date & Time</div>
+                    <input name="task_date" class='button' type="date" id="event_date" placeholder="Date" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                    <input name="task_time" class='button' type="time" id="event_time" placeholder="Time" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                    <div>High Priority?</div>
+                    <input id="priority" name="priority" class="button" type="checkbox" value="yes">
+                </div>
+                
+                <button class="button-54" style="margin-top: 20px;" type="submit">Add</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <div id="form" style="display: none;">
+        <div id="actualform1" style="background-color: #FFE8D4;border-radius: 10px; height: fit-content;position: fixed;padding: 30px; border: 3px solid black;">
+            <button class="delete" style="border-radius: 50px;" onclick="closeForm()">✕</button>
+            <h1 id="whatquestion" style="text-align: center;font-family: 'Playfair Display', serif;font-weight: 600;">What is your Question?</h1>
+            <form action="/add_question/{{ todo.0.module_id }}" method="POST" style="display: flex;flex-direction: column;align-items: center;height: 100%;">
+                {% csrf_token %}
+                <div style="display: flex;flex-direction: column;width: 100%;height: 50%;">
+                    <textarea name="question" style='width: 100%;height: 100%;margin-bottom: 10px;resize:none;padding: 10px;font-size: 20px;' class="button"  id="event-repeat" rows="5" required></textarea>
+                </div>
+                <button class="button-54" style="margin-top: 20px;" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,1013 @@
+{% extends "uniplanner/layout.html" %}
+{%load static %}
+{% block title %}Home{% endblock %}
+{% block style %}
+    .move{
+        color: #6d6d6d;
+        background-color: white;
+        border: 1px solid #6d6d6d;
+        transition: 0.5s background-color ease-out,0.5s color ease-out,0.5s border ease-out;
+
+    }
+    .move:hover {
+        background-color: black;
+        color:white;
+        border: 1px solid transparent;
+    }
+    .trans {
+        animation-name: fade;
+        animation-duration: 0.25s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+    
+    @keyframes fade {
+        from {
+            opacity: 1;
+            
+        }
+        to {
+            opacity :0.3;
+            pointer-events:none;
+        }
+    }
+
+    .trans1 {
+        animation-name: popup;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes popup {
+        0% {
+            
+            opacity:0;
+        }
+        50%  {
+            
+            opacity:0;
+        }
+        100% {
+            opacity: 1;
+            
+        }
+
+    }
+    .trans3 {
+        animation-name: fadein;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes fadein {
+        0% {
+            opacity:0.3;
+            pointer-events:none;
+        }
+        100% {
+            opacity: 1;
+            pointer-events:auto;
+            
+        }
+
+    }
+
+    .trans2 {
+        animation-name: fadeout;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes fadeout {
+        0% {
+            opacity:1;
+            
+        }
+        100% {
+            opacity: 0;
+            
+        }
+
+    }
+
+    .events {
+        margin-top: 20px;
+        height:30vw;
+        border: 1px solid black;
+        width: 30vw;
+        background-color: aqua;
+        border-radius:10px;
+        padding-left:10vw;
+    }
+
+    .all_events {
+        display: flex;
+        flex-direction:column;
+        overflow:auto;
+        overflow-x:hidden;
+        height:60vh;
+        border-top:1px solid grey;
+        border-bottom:1px solid grey;
+        border: 1px solid grey;
+        border-radius:20px;
+        background-color:#3E363F; 
+        
+        
+    }
+ 
+    .all_events::-webkit-scrollbar {
+        
+        width:20px;
+        
+        
+    }
+    
+    .all_events::-webkit-scrollbar-thumb {
+        background-color: grey;
+        border-radius: 10px;
+        border: 5px solid transparent;
+          
+        background-clip: content-box;
+      }
+    .all_events::-webkit-scrollbar-thumb:hover {
+        background-color: lightgrey;
+      }
+    
+        .dip {
+            
+            transition: 1s ease-out;
+            cursor:pointer;
+            
+        }
+
+        .dip:hover {
+            transform: translate(0px,15px);
+        }
+    
+    
+    
+    .select {
+        color:lightgrey;
+    }
+    .select:hover {
+        color: grey;
+    }
+    .select:active {
+        color:black;
+    }
+
+    .og {
+        color:white;
+        opacity:0.5;
+    }
+
+    .og:hover {
+        color:grey;
+        opacity:1;
+    }
+    .og:active {
+        color:black;
+    }
+
+    @media (min-width:390px) {
+        #elementEl {
+            font-size:45px;
+            left: 10%;
+            top:9vh;
+            z-index:0;
+        }
+        #arrow {
+            display:none;
+        }
+        #all_events {
+            left: 5%;
+            top:28vh;
+            width:90%;
+            position:absolute;
+        }
+        .event-container {
+            width:95%;
+            margin-left:4vw;
+        }
+        #plus {
+            right:6vw;
+            top:17vh;
+            font-size: 75px;
+            z-index:1;
+        }
+
+        #all_modules {
+            grid-template-columns: 1fr 1fr;
+        }
+        #temporary {
+            width:100px;
+        }
+        #filter {
+            position:absolute;
+            top:22.5vh;
+            left:12vw; 
+            border-radius: 20px;
+        }
+        #filter-sign {
+            position:absolute;
+            top: 23.5vh; 
+            left:4vw;
+            font-size: 30px;
+        }
+        #addevent {
+            font-size: 35px;
+        }
+        #actualform {
+            
+            width:90vw;
+            border-radius: 50px;
+            height: fit-content;
+            position: fixed;
+            margin-left: 5vw;
+            top: 17vh;
+            padding: 30px;
+        }
+    }
+
+
+    @media (min-width:600px) {
+        #elementEl {
+            font-size:50px;
+            left: 10%;
+            top:10vh;
+        }
+
+        #arrow {
+            display:none;
+        }
+        #all_events {
+            left: 5%;
+            top:25vh;
+            width:90%;
+            position:absolute;
+        }
+        .event-container {
+            width:95%;
+            margin-left:4vw;
+        }   
+        #plus {
+            right:5vw;
+            top:11vh;
+            font-size: 100px;
+        }
+        #all_modules {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        #temporary {
+            width:145px;
+        }
+        #filter {
+            position:absolute;
+            top:19vh;
+            left:12vw; 
+            border-radius: 20px;
+        }
+        #filter-sign {
+            position:absolute;
+            top: 20vh; 
+            left:7vw;
+            font-size: 30px;
+        }
+        #addevent {
+            font-size: 50px;
+        }
+        #actualform {
+            
+            width:70vw;
+            border-radius: 50px;
+            height: fit-content;
+            position: fixed;
+            margin-left: 15vw;
+            top: 17vh;
+            padding: 30px;
+        }
+    }
+
+    @media (min-width:900px) {
+        #elementEl {
+            font-size:50px;
+            left: 30%;
+            top:5vh;
+        }
+        #all_events {
+            left: 50px;
+            top:20vh;
+            width:70vw;
+            position:absolute;
+        }
+        .event-container {
+            width:60vw;
+            margin-left:5vw;
+        }
+        #arrow {
+            display:flex;
+        }
+        
+        #plus {
+            right:3vw;
+            top:30vh;
+            font-size: 200px;
+        }
+        #all_modules {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        #temporary {
+            width:150px;
+        }
+
+        #filter {
+            position:absolute;
+            top:13vh;
+            left:12vw; 
+            border-radius: 20px;
+        }
+        #filter-sign {
+            position:absolute;
+            top: 14vh; 
+            left:8vw;
+            font-size: 30px;
+        }
+        #addevent {
+            font-size: 60px;
+        }
+        #actualform {
+            
+            width:60vw;
+            border-radius: 50px;
+            height: fit-content;
+            position: fixed;
+            margin-left: 20vw;
+            top: 17vh;
+            padding: 30px;
+        }
+
+    }
+
+    @media (min-width:1200px) {
+            #elementEl {
+                font-size:45px;
+                left: 5vw;
+                top:40vh;
+            }
+            #plus {
+                right:0;
+                top:29vh;
+                font-size: 170px;
+            }
+            #all_events {
+                margin-left: 12vw;
+                width:50vw;
+                position:inherit;
+            }
+            .event-container {
+                width:40vw;
+                margin-left:5vw;
+            }
+            #all_modules {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+            #temporary {
+                width:7vw;
+            }
+            #arrow {
+                display:flex;
+            }
+            #filter {
+                position:absolute;
+                top:12vh;
+                left:42vw; 
+                border-radius: 20px;
+            }
+            #filter-sign {
+                position:absolute;
+                top: 13vh; 
+                left:39vw;
+                font-size: 30px;
+            }
+            #addevent {
+                font-size: 70px;
+            }
+            #actualform {
+                width:40vw;
+                border-radius: 50px;
+                height: 65vh;
+                position: fixed;
+                margin-left: 30vw;
+                top: 17vh;
+                padding: 30px;
+            }
+    
+            
+
+    }
+    @media (min-width:1450px) {
+        #plus {
+            right:0;
+            top:29vh;
+            font-size: 200px;
+        }
+        #elementEl {
+            font-size:70px;
+            left: 5vw;
+            top:40vh;
+        }
+        #arrow {
+            display:flex;
+        }
+        #all_events {
+            margin-left: 23vw;
+            width:40vw;
+            position:inherit;
+        }
+        .event-container {
+            width:30vw;
+            margin-left:5vw;
+        }
+        #all_modules {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        #temporary {
+            width:7vw;
+        }
+        #filter {
+            position:absolute;
+            top:12vh;
+            left:52vw; 
+            border-radius: 20px;
+        }
+        #filter-sign {
+            position:absolute;
+            top: 13vh; 
+            left:50vw;
+            font-size: 30px;
+        }
+        #addevent {
+            font-size: 70px;
+        }
+        #actualform {
+            width:40vw;
+            border-radius: 50px;
+            height: 65vh;
+            position: fixed;
+            margin-left: 30vw;
+            top: 17vh;
+            padding: 30px;
+        }
+
+    }
+    @media (min-width:1600px) {
+        #plus {
+            right: 1vw;
+            top:29vh;
+            font-size: 200px;
+        }
+        #elementEl {
+            font-size:70px;
+            left: 5vw;
+            top:40vh;
+        }
+        #all_events {
+            margin-left: 23vw;
+            width:40vw;
+            position:static;
+
+        }
+        
+        .event-container {
+            width:30vw;
+            margin-left:5vw;
+        }
+        #all_modules {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        #temporary {
+            width:7vw;
+        }
+        #arrow {
+            display:flex;
+        }
+        #filter {
+            position:absolute;
+            top:12vh;
+            left:52vw; 
+            border-radius: 20px;
+        }
+        #filter-sign {
+            position:absolute;
+            top: 13vh; 
+            left:50vw;
+            font-size: 30px;
+        }
+        #addevent {
+            font-size: 70px;
+        }
+        #actualform {
+            width:40vw;
+            border-radius: 50px;
+            height: 65vh;
+            position: fixed;
+            margin-left: 30vw;
+            top: 17vh;
+            padding: 30px;
+        }
+    }
+
+    
+
+    
+
+
+{% endblock %}
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        typeWriter(elementEl);
+        document.querySelector('#end').style.display = 'none';
+        document.querySelector('#page1').style.height = window.innerHeight + 'px';
+        document.querySelector('#page1').style.width = document.documentElement.clientWidth + 'px';
+        document.querySelector('#page2').style.height = window.innerHeight + 'px';
+        document.querySelector('#page2').style.width = document.documentElement.clientWidth + 'px';
+
+        document.querySelector('#filter').addEventListener('keyup', function(event) {
+                if (event.target.value == '') {
+                    update();
+                }
+                else {
+                    var csrfToken = document.querySelector("[name='csrf_token']").content;
+                    fetch('/filter',{
+                        method:"POST",
+                        headers: {
+                            "Content-Type":"application/json",
+                            "X-CSRFToken": csrfToken
+                        },
+                        body: JSON.stringify({
+                            "word": event.target.value
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector("#all_events").innerHTML='';
+                        data.forEach((info) => {
+                            element = document.createElement('div');
+                            element.classList.add("event-container");
+                            
+                            
+                            
+                            element.innerHTML = `<div class="event" style="width: 100%;">
+                                                    <div class="event-left">
+                                                        <div class="event-date">
+                                                        <div class="date">${info.event_day}</div>
+                                                        <div class="month">${info.event_month }, ${info.event_year}</div>
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <div class="event-right" style="width:100%;">
+                                                        <div style="display: flex;align-items: flex-start;width: 95%;justify-content: space-between;">
+                                                            <h3 class="event-title">${ info.event_name }</h3>
+                                                            <button class="delete" data-time="${ info.event_time }" data-day="${ info.event_day }" data-month="${ info.event_month }" data-year="${ info.event_year }" data-event_name="${ info.event_name }" data-username="${ info.username }" style="border-radius: 30px;margin-top: 5px;" onclick="deleted(event)">✕</button>
+                                                        </div>
+                                                        
+                                            
+                                                        <div class="event-timing">
+                                                        <img src="static/uniplanner/time.png" alt="" /> ${info.event_time}
+                                                        </div>
+                                                    </div>
+                                                </div>`
+
+                            document.querySelector('#all_events').append(element);
+                        });
+                    })
+                }
+                
+        })
+    });
+
+    function update() {
+        fetch("/update")
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector("#all_events").innerHTML='';
+                if (data.length === 0) {
+                    element = document.createElement('h2');
+                    element.style.marginTop = '25vh';
+                    element.style.marginLeft = '4vw';
+                    element.style.color = '#FFE8D4';
+                    element.innerHTML = 'No upcoming events...Enjoy your day';
+                    document.querySelector('#all_events').append(element);
+                }
+                else {    
+                    data.forEach((info) => {
+                        element = document.createElement('div');
+                        element.classList.add("event-container");
+                        
+                        
+                        
+                        element.innerHTML = `<div class="event" style="width:100%">
+                                                <div class="event-left">
+                                                    <div class="event-date">
+                                                    <div class="date">${info.event_day}</div>
+                                                    <div class="month">${info.event_month }, ${info.event_year}</div>
+                                                    </div>
+                                                </div>
+                                        
+                                                <div class="event-right" style="width:100%">
+                                                    <div style="display: flex;align-items: flex-start;width: 95%;justify-content: space-between;">
+                                                        <h3 class="event-title">${ info.event_name }</h3>
+                                                        <button class="delete" data-time="${ info.event_time }" data-day="${ info.event_day }" data-month="${ info.event_month }" data-year="${ info.event_year }" data-event_name="${ info.event_name }" data-username="${ info.username }" style="border-radius: 30px;margin-top: 5px;" onclick="deleted(event)">✕</button>
+                                                    </div>
+                                                    
+                                        
+                                                    <div class="event-timing">
+                                                    <img src="static/uniplanner/time.png" alt="" /> ${info.event_time}
+                                                    </div>
+                                                </div>
+                                            </div>`
+
+                        document.querySelector('#all_events').append(element);
+                    });
+                }
+            });
+    }
+
+    function typeWriter(el) {
+        const textArray = el.innerHTML.split('');
+        el.innerHTML = '';
+        textArray.forEach((letter, i) =>
+            setTimeout(() => (el.innerHTML += letter), 95 * i)
+        );
+        
+    }
+
+    function deleted(event) {
+        var username = event.target.dataset.username;
+        var event_name = event.target.dataset.event_name;
+        var event_year = event.target.dataset.year;
+        var event_month = event.target.dataset.month;
+        var event_day = event.target.dataset.day;
+        var event_time = event.target.dataset.time;
+        var event_year = event.target.dataset.year;
+
+        var csrfToken = document.querySelector("[name='csrf_token']").content;
+        
+        fetch('/delete', {
+            method:"POST",
+            headers: {
+                "Content-Type":"application/json",
+                "X-CSRFToken": csrfToken
+            },
+            body: JSON.stringify({
+                "username":username,
+                "event_name":event_name,
+                "event_month":event_month,
+                "event_day": event_day,
+                "event_time":event_time,
+                "event_year":event_year
+            })
+        })
+        .then(response => response.text())
+        .then(text => {
+            console.log(text);
+            update();
+        });
+    }
+    
+    function openForm() {
+        document.querySelector("header").classList.remove('trans3');
+        document.querySelector("#body-container").classList.remove('trans3');
+        document.querySelector('#form').classList.remove('trans2');
+        document.querySelector('#form').style.display='flex';
+        document.querySelector("header").classList.add('trans');
+        document.querySelector("#body-container").classList.add('trans');
+        document.querySelector('#form').classList.add('trans1');
+        
+    }
+
+    function closeForm() {
+        document.querySelector('#end').style.display = 'none';
+        document.querySelector('#end-date').value = '';
+        document.querySelector("#event_name").value = '';
+        document.querySelector("#event_date").value = '';
+        document.querySelector("#event_time").value = '';
+        document.querySelector('#event_repeat').value= '';
+        document.querySelector("header").classList.remove('trans');
+        document.querySelector("#body-container").classList.remove('trans');
+        document.querySelector('#form').classList.remove('trans1');
+        document.querySelector("header").classList.add('trans3');
+        document.querySelector("#body-container").classList.add('trans3');
+        document.querySelector('#form').classList.add('trans2');
+        document.querySelector('#form').style.display='none';
+        
+    }
+
+    function add_event(event) {
+        console.log("add_event started");
+        event.preventDefault();
+        var csrfToken = document.querySelector("[name='csrf_token']").content;
+        fetch("/add_event", {
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json",
+                "X-CSRFToken": csrfToken
+            },
+            body: JSON.stringify({
+                "event_name": document.querySelector("#event_name").value,
+                "event_date": document.querySelector("#event_date").value,
+                "event_time": document.querySelector("#event_time").value,
+                "event_repeat":document.querySelector("#event_repeat").value,
+                "event_end":document.querySelector("#end-date").value
+            })
+        })
+        .then(response => response.text())
+        .then(text => {
+            console.log(text);
+            
+            fetch("/update")
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector("#all_events").innerHTML='';
+                data.forEach((info) => {
+                    element = document.createElement('div');
+                    element.classList.add("event-container");
+                    
+                    
+                    
+                    element.innerHTML = `<div class="event" style="width:100%">
+                                            <div class="event-left">
+                                                <div class="event-date">
+                                                <div class="date">${info.event_day}</div>
+                                                <div class="month">${info.event_month }, ${info.event_year}</div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="event-right" style="width:100%">
+                                                <div style="display: flex;align-items: flex-start;width: 20vw;justify-content: space-between;">
+                                                    <h3 class="event-title">${ info.event_name }</h3>
+                                                    <button class="delete" data-time="${ info.event_time }" data-day="${ info.event_day }" data-month="${ info.event_month }" data-year="${ info.event_year }" data-event_name="${ info.event_name }" data-username="${ info.username }" style="border-radius: 30px;margin-top: 5px;" onclick="deleted(event)">✕</button>
+                                                </div>
+                                                
+                                    
+                                                <div class="event-timing">
+                                                <img src="static/uniplanner/time.png" alt="" /> ${info.event_time}
+                                                </div>
+                                            </div>
+                                        </div>`
+
+                    document.querySelector('#all_events').append(element);
+                });
+                closeForm();
+        
+
+            });
+            
+        });
+    }
+
+    function changed(event) {
+        if (event.target.value != "Never") {
+            document.querySelector('#end').style.display = 'flex';
+        }
+        else {
+            document.querySelector('#end').style.display = 'none';
+        }
+    }
+
+    function add_module() {
+        
+        element = document.createElement('div');
+        element.classList.add('dip');
+        element.style.display='flex';
+        element.style.flexDirection='column';
+        element.style.alignItems='center';
+        element.style.height='fit-content';
+
+        element.innerHTML =`    <button onclick="delete_mod(event)" class="delete">✕</button>
+                                <div class="dip" style="display: flex; flex-direction: column;align-items: center;">
+                                        <form id='form' action="/module" method="POST">
+                                            {% csrf_token %}
+                                            <button type='submit' style="border:none;background-color: transparent;outline: none;height: fit-content;"><i class="material-symbols-outlined" style="font-size: 75px;color: #6E352C;">&#xe873</i></button>
+                                            
+                                        </form>
+                                        <textarea id='temporary' type='text' style="resize:none;overflow-y:hidden;border-radius:10px;padding:10px;' rows="3" maxlength='30' wrap='soft'>Untitled</textarea>
+                                </div>`;
+                            
+        document.querySelector('#all_modules').insertBefore(element, document.querySelector('#new_module'));
+        document.querySelector('#temporary').addEventListener('keypress', function(event) {
+            console.log("keypress occured")
+            if (event.key == "Enter") {
+                var csrfToken = document.querySelector("[name='csrf_token']").content;
+                var module_name = document.querySelector('#temporary').value;
+                console.log(module_name);
+                fetch('/addmodule', {
+                    method:"POST",
+                    headers: {
+                        "Content-Type":"application/json",
+                        "X-CSRFToken": csrfToken
+                    },
+                    body: JSON.stringify({
+                        "module_name":module_name
+                    })  
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.querySelector('#temporary').parentNode.parentNode.id = data["id"];
+                    
+                    document.querySelector('#form').action = `/module/${data["id"]}`;
+                    
+                    
+                    element2 = document.createElement('div');
+                    element2.innerHTML = `${module_name}`;
+                    document.querySelector('#temporary').parentNode.append(element2);
+                    document.querySelector('#temporary').remove();
+
+
+                });
+            }
+            
+        });
+    }
+
+    function openwarning() {
+        document.querySelector("header").classList.remove('trans3');
+        document.querySelector("#body-container").classList.remove('trans3');
+        document.querySelector('#form2').classList.remove('trans2');
+        document.querySelector('#form2').style.display='flex';
+        document.querySelector("header").classList.add('trans');
+        document.querySelector("#body-container").classList.add('trans');
+        document.querySelector('#form2').classList.add('trans1');
+    }
+
+    function closewarning() {
+        document.querySelector("header").classList.remove('trans');
+        document.querySelector("#body-container").classList.remove('trans');
+        document.querySelector('#form2').classList.remove('trans1');
+        document.querySelector("header").classList.add('trans3');
+        document.querySelector("#body-container").classList.add('trans3');
+        document.querySelector('#form2').classList.add('trans2');
+        document.querySelector('#form2').style.display='none';
+    }
+
+    function delete_mod(event) {
+        openwarning()
+        document.querySelector('#yes').addEventListener('click', function() {
+            console.log(event.target);
+            id = event.target.parentNode.id;
+            console.log(id);
+            var csrfToken = document.querySelector("[name='csrf_token']").content;
+            fetch('/deletemod', {
+                method:"POST",
+                headers: {
+                    "Content-Type":"application/json",
+                    "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify({
+                    "id": id
+                })
+            })
+            .then(response => response.text())
+            .then(text => {
+                console.log(text);
+                event.target.parentNode.remove();
+                closewarning();
+
+            });
+        }, {once:true});
+        
+    }
+
+    function customscroll() {
+        console.log("event");
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    
+
+</script>
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div id="body-container" style="display: flex;flex-direction: column;">
+
+        <div id="page1" style="display: flex;align-items: center;">
+            <div style="margin-top: 150px;margin-left: 15vw;margin-right: 15vw;">
+                    <div>
+                        <button id="plus" class='dip' style="width: fit-content;position: absolute;outline: none;border: none;background-color: transparent;color: #FFE8D4;" onclick="openForm()">&#65291;</button>
+                    </div>
+                    <div><h1 id="elementEl" style="position: absolute;font-family: 'Playfair Display', serif;font-weight: 600;color: #3E363F;">Upcoming Events,</h1></div>
+                    <div style="margin-left:10vw;margin-top: -20vh;">
+                        <i id="filter-sign" style="color:black" class="material-symbols-outlined">&#xe152</i>
+                        <input name="filter" id="filter" style="border: 1px solid grey;outline: none;padding: 10px;font-size: medium;" placeholder="Filter">
+                        <div class="all_events" id="all_events">
+                            {% for info in event_info %}
+                            <div class="event-container">
+                                <div class="event" style="width: 100%;">
+                                <div class="event-left">
+                                    <div class="event-date">
+                                    <div class="date">{{ info.event_day }}</div>
+                                    <div class="month">{{ info.event_month }}, {{ info.event_year }}</div>
+                                    </div>
+                                </div>
+                                <div class="event-right" style="width:100%">
+                                    <div style="display: flex;align-items: flex-start;width: 95%;justify-content: space-between;">
+                                        <h3 class="event-title">{{ info.event_name }}</h3>
+                                        <button class="delete" data-time="{{ info.event_time }}" data-day="{{ info.event_day }}" data-month="{{ info.event_month }}" data-year="{{ info.event_year }}" data-event_name="{{ info.event_name }}" data-username="{{ info.username }}" style="border-radius: 30px;margin-top: 5px;" onclick="deleted(event)">✕</button>
+                                    </div>
+                                    
+            
+                                    <div class="event-timing">
+                                    <img src={% static "uniplanner/time.png" %} alt="" /> {{ info.event_time }}
+                                    </div>
+                                    
+                                </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <h2 style="margin-top: 25vh;margin-left: 4vw;color: #FFE8D4;">No upcoming events...Enjoy your day</h2>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <button id="arrow" onclick="customscroll()" class="dip og" style=" position: absolute;background-color: transparent;border: none;left: 46vw;top: 85vh;"><span style="font-size: 100px;" class="material-symbols-outlined">&#xe5cf</span></button>
+            </div>
+
+            
+        </div>
+
+        <div id="page2" style="background-color: #FFE8D4;">
+            <div style="position:absolute; margin-top: 10vh;margin-left: 15vw;margin-right: 15vw;">
+                <h1 style="font-family: 'Playfair Display', serif;font-weight: 600;font-size: 70px;color: #3E363F;">Modules</h1>
+                    <div id='all_modules'style="margin-top: 5vh;display: grid;width: 70vw;height: 70vh;grid-template-rows:repeat(auto-fill, 1fr);justify-items: center;">
+                        {% for module in module_info %}
+                            <div id="{{ module.id }}" style="display: flex;flex-direction: column;align-items: center;height: fit-content;">
+                                <button onclick="delete_mod(event)" class="delete">✕</button>
+                                <div class="dip" style="display: flex; flex-direction: column;align-items: center;">
+                                    <a href="/module/{{ module.id }}" >
+                                        <button type="click" style="border:none;background-color: transparent;outline: none;height: fit-content;"><i class="material-symbols-outlined" style="font-size: 75px;color: #6E352C;">&#xe873</i></button>  
+                                    </a>
+                                    <div>{{ module.name }}</div>
+                                </div>  
+                            </div>
+                            
+                        {% endfor %}
+                            <button id ='new_module' onclick='add_module()' style="background-color: transparent;border: none;outline: none;height: 0%;margin-top: 3vh;"><i class="material-symbols-outlined select" style="font-size: 75px;">&#xe89c</i></button>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <div id="form" style="display: none;">
+        <div id="actualform" style="background-color: #FFE8D4; border: 3px solid black;">
+            <button class="delete" style="border-radius: 50px;" onclick="closeForm()">✕</button>
+            <h1 id="addevent" style="text-align: center;font-family: 'Playfair Display', serif;font-weight: 600;">Add Event</h1>
+            <form style="display: flex;flex-direction: column;align-items: center;" onsubmit="add_event(event)">
+                <input class='button' type="text" id="event_name" placeholder="Title" style="width: 200px; margin-bottom: 10px;margin-top: 20px;" autocomplete="off" required>
+                <input class='button' type="date" id="event_date" placeholder="Date" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                <input class='button' type="time" id="event_time" placeholder="Time" style="width: 200px; margin-bottom: 10px;" autocomplete="off" required>
+                <select class="button" style="width: 200px; margin-bottom: 10px;" required id="event_repeat" onchange="changed(event)">
+                    <option selected disabled value="">--Repeat--</option>
+                    <option>Never</option>
+                    <option>Every Day</option>
+                    <option>Every Week</option>
+                    <option>Every 2 Weeks</option>
+                    <option>Every Month</option>
+                    <option>Every Year</option>
+                </select>
+                <div id="end" style="display: flex;flex-direction: column;">
+                    <div>End date</div>
+                    <input class="button" type="date" style="width: 200px; margin-bottom: 10px;" id="end-date">
+                </div>
+                
+                <button class="button-54" style="margin-top: 20px;" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="form2" style="display: none;">
+        <div style="background-color: white;border-radius: 50px; height: 40vh;width: 40vw;position: fixed;margin-left: 30vw;top: 17vh;padding: 30px; border: 3px solid black;">
+            <button class="delete" style="border-radius: 50px;" onclick="closewarning()">✕</button>
+            <h1 style="text-align: center;font-family: 'Playfair Display', serif;font-weight: 600;font-size: 70px;">Are you sure?</h1>
+            <div style="display: flex; justify-content: space-between;align-items: center;height: 80%;">
+                <button id="yes" class="button-54" style="color: red;">Yes</button>
+                <button onclick="closewarning()" class="button-54">Cancel</button>
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}
