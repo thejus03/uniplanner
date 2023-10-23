@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = "/login"
 
