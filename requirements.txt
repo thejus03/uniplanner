@@ -54,7 +54,7 @@ simplejson==3.17.6
 six==1.16.0
 SQLAlchemy==1.4.46
 sqlparse==0.4.4
-systemd-python==234
+
 termcolor==2.3.0
 tqdm==4.66.1
 typing_extensions==4.8.0
