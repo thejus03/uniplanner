@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # exit on error
 set -o errexit
-sudo apt install -y libsystemd-dev
+
+apt install -y libsystemd-dev
 pip install --upgrade pip
 pip install -r requirements.txt
 
