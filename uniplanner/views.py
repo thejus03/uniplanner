@@ -231,5 +231,6 @@ def filter(request):
     event_info = event.objects.filter(username=request.user.username, event_name__icontains = word)
 
     event_info = [i.serialize() for i in event_info]
-    
+    for info in event_info:
+        info["event_time"] = info["event_time"].strftime("%I:%M %p")
     return JsonResponse(event_info, safe=False)
