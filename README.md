@@ -14,9 +14,4 @@ Inside the urls.py contains all the paths that link to the functions in views.py
 
 Inside views.py is the backend for the entire webapp.
 
-## Distinctiveness and Complexity
-My project is completely different from the other projects that I submitted in CS50W. My project's target audience is University students and this webapp is all about preparing for tutorials and lecture, planning for projects and asking questions without losing track of it overtime. This webapp is not a social network app as it has nothing to do with communication between users and posting data for it to be accessed by others, nor is it an e-commerce site where one can buy and sell goods.
 
-The webapp utilizes django as seen by the structure of the files and how it is run(python manage.py runserver). It also has javascript as backend as seen by the several script tags that contain javascript code in the html files. Javascript has also been used to ensure that the webapp is a single page webapp for as much as possible for better UI and design. When needed to reload i made sure to save the scroll info into localstorage so that once reloaded i can use this info to scroll back to the exact place the user reloaded.
-
-My webapp is mobile responsive made possible using media queries. This can be seen by the Dev tools in chrome that allow users to change the dimension of the webapp to mobile and tablet sizes. When doing this user can see that the information in the webapp changes dimensions slowly as the width changes and once a mobile width is reached, all the informatin is shown in a column for readability and better UI. 
