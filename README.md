@@ -1,6 +1,6 @@
-# UniPlanner
+# Uniplanner
 
-UniPlanner is a Django web application designed to assist university students in planning their day-to-day activities effortlessly and efficiently. Explore the application at [uniplanner.onrender.com](https://uniplanner.onrender.com).
+Uniplanner is a Django web application designed to assist university students in planning their day-to-day activities effortlessly and efficiently. Explore the application at [uniplanner.onrender.com](https://uniplanner.onrender.com).
 
 ## Core Functionalities
 
