@@ -5,20 +5,23 @@ UniPlanner is a Django web application designed to assist university students in
 ## Core Functionalities
 
 - **Events**:
-  ![Events Page Screenshot]("screenshots/Screenshot 2023-10-24 175848.png")
+  ![Events Page Screenshot](screenshots/events.png)
    - Features an events table for users to add and track upcoming events.
    - Includes a filter bar for easy searching of events by name, displaying matching events along with their date and time.
 
-- **Modules**: 
+- **Modules**:
+  ![Events Page Screenshot](screenshots/module.png)
    - Provides a module page for creating and naming modules.
    - Clicking on a module navigates to a detailed page displaying all information related to that specific module.
 
-- **Deadlines**: 
+- **Deadlines**:
+  ![Events Page Screenshot](screenshots/deadline.png)
    - Allows for the addition of project, homework, and other deadlines.
    - Displays crucial deadline information including remaining days, urgency ranking, and optional prioritization which highlights high workload deadlines.
    - Features a completion tick box, and automatic removal of past deadlines.
 
-- **Unanswered Questions**: 
+- **Unanswered Questions**:
+  ![Events Page Screenshot](screenshots/questions.png) 
    - Includes a table for jotting down unanswered questions to address later with professors.
    - Features an answer indicator and automatic deletion of answered questions after 24 hours.
 
