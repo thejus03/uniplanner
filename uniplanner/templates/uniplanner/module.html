@@ -776,7 +776,7 @@
                                 {% endif %}
                                     {% if do.status == "undone" %}
                                         
-                                            <td><div style="display: flex; align-items: center;"><button id="{{ do.id }}" onclick="done(event)" style="border: none;background-color: transparent;      height: fit-content;width: fit-content;font-weight:300"><i data-id="{{ do.id }}" class="material-symbols-outlined tick" style="margin-right: 1vw;">&#xe86c</i></button>{{ do.task }}</div></td>
+                                            <td><div style="display: flex; align-items: center;"><button id="{{ do.id }}" onclick="done(event)" style="border: none;background-color: transparent;height: fit-content;width: fit-content;font-weight:300"><i data-id="{{ do.id }}" class="material-symbols-outlined tick" style="margin-right: 1vw;">&#xe86c</i></button>{{ do.task }}</div></td>
                                         
                                     {% else %}
                                         <td><div style="display: flex; align-items: center;"><button style="cursor:default;border: none;background-color: transparent;height: fit-content;width: fit-content;font-weight:300"><i data-id="{{ do.id }}" class="material-symbols-outlined fulltick" style="margin-right: 1vw;">&#xe86c</i></button>  <s style="text-decoration-line: line-through; text-decoration-thickness: 2px;">{{ do.task }}</s></div></td>
@@ -808,7 +808,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div ><button id="plus" style="border:none;background-color: transparent;width:0;outline:none;" class="dip" onclick="openwarning()">&#65291;</button></div>
+                <div ><button id="plus" style="border:none;background-color: transparent;width:0;outline:none;color:black;" class="dip" onclick="openwarning()">&#65291;</button></div>
             </div>
             
             
