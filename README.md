@@ -1,17 +1,47 @@
-# Uniplanner
+# UniPlanner
 
-## What is Uniplanner? 
-Uniplanner is a webapp that help university students to plan there day to day activities easily and efficiently. It has a events table that allow users to add events to the table. This allow users to keep track of the upcoming events and prepare for it. Overtime there will be dozens of events and therefore to make it more consumer-friendly I made a filter bar that allows users too search for an event name and returns all the events with that event name along with the date and time of the event. Below that is the module page that allow users to create modules and rename it to the explicit name for their module. When the module is clicked, it brings the user to a new page that shares all ther information about that specific module that the user inputted. In this page, users can add deadlines for projects, homeworks, etc. When added to the table it shows a variety of information about the deadline succinctly. It shows the number of remaining days for the deadline and the urgency which ranked based on the following:- High:<=1 day, Medium: >1 day <7 days, Low: >7 days. Besides this when adding the deadline, user can also prioritise it if it requires a lot of time, ie, high workload. When prioritised, the table automatically highlights the row for the specific deadline, thereby grabbing the user's attention when he scrolls. When the project or homework is completed, the user can click the grey tick sign that will turn green and will subsequently cancel out the project. After the deadline is passed the deadline will be automatically deleted from the database. Below the deadline table, there is another table for Unanswered questions. This is an important feature for university students as with low tutorial hours and high volume of students, professors are not able to answer all questions. Therefore, it becomes important for students to jott down questions that they would like to ask prof at a later time. Once the question is answered, the user can click the question mark sign that will cancel the question and after 24 hours the question will get deleted. To add question click the thinking question symbol which opens a form that allows users to add question.
+UniPlanner is a Django web application designed to assist university students in planning their day-to-day activities effortlessly and efficiently. Explore the application at [uniplanner.onrender.com](https://uniplanner.onrender.com).
 
-## What is in each file?
-Inside the uniplanner app, I added several templates. The login.html is for the login page. This is the page the user is initially brought to if not logged in. The user can also register in this template. Next, the index.html is the main page or the homepage whose layout is extended from layout.html. This is the frontend for the event table and the modules that can be clicked. Once modules are clicked, it renders the module.html that extends from layout2.html. This contains all the frontend for the module-specific information that the user stored like the deadlines and the unanswered questions. 
+## Core Functionalities
 
-There are also some static files, mainly some pngs for the aesthetics of the webapp. 
+- **Events**: 
+   - Features an events table for users to add and track upcoming events.
+   - Includes a filter bar for easy searching of events by name, displaying matching events along with their date and time.
 
-Inside models.py, I created a total of 6 models. The User model is for the users of the webapp. The event model is for the events that the user created. The module model is all the module names that users have created. The usermodule model is the link between the a user and the module the user created. The toask model stores all the unanswered questions for each module.Lastly, the deadline model contains all the deadlines for each module. For some of them i have created a serialize() function that allows me to convert all the QuerySet data into a dictionary for easy access.
+- **Modules**: 
+   - Provides a module page for creating and naming modules.
+   - Clicking on a module navigates to a detailed page displaying all information related to that specific module.
 
-Inside the urls.py contains all the paths that link to the functions in views.py
+- **Deadlines**: 
+   - Allows for the addition of project, homework, and other deadlines.
+   - Displays crucial deadline information including remaining days, urgency ranking, and optional prioritization which highlights high workload deadlines.
+   - Features a completion tick box, and automatic removal of past deadlines.
 
-Inside views.py is the backend for the entire webapp.
+- **Unanswered Questions**: 
+   - Includes a table for jotting down unanswered questions to address later with professors.
+   - Features an answer indicator and automatic deletion of answered questions after 24 hours.
+
+## File Structure
+
+- **Templates**:
+   - `login.html`: Login and registration page.
+   - `index.html`: Main page displaying the event table and modules, extends from `layout.html`.
+   - `module.html`: Module-specific information page, extends from `layout2.html`.
+
+- **Static Files**:
+   - Contains aesthetic elements like PNG images for enhancing the web app's appearance.
+
+- **models.py**:
+   - Houses 6 models encompassing users, events, modules, user-module relations, unanswered questions, and deadlines.
+   - Some models feature a `serialize()` function for converting QuerySet data into dictionaries for easier access.
+
+- **urls.py**:
+   - Defines all paths linking to the functions in `views.py`.
+
+- **views.py**:
+   - Contains the backend logic for the entire web application.
+
+
+
 
 
