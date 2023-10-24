@@ -5,7 +5,7 @@ UniPlanner is a Django web application designed to assist university students in
 ## Core Functionalities
 
 - **Events**:
-  ![Events Page Screenshot](screenshots/Screenshot 2023-10-24 175848.png)
+  ![Events Page Screenshot]("screenshots/Screenshot 2023-10-24 175848.png")
    - Features an events table for users to add and track upcoming events.
    - Includes a filter bar for easy searching of events by name, displaying matching events along with their date and time.
 
